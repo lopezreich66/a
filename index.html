@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,7 +100,7 @@
       border-top: 1px solid #222;
     }
 
-    /* Modal de preenchimento com zoom e X vermelho grande */
+    /* Modal de preenchimento - correção total para iOS */
     #buyModal {
       display: none;
       position: fixed;
@@ -127,8 +127,6 @@
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
-      transform: scale(1.05); /* Zoom sutil ao abrir */
-      transition: transform 0.3s ease;
     }
     #buyModal .close-x {
       position: absolute;
@@ -141,7 +139,10 @@
       line-height: 1;
       z-index: 10;
     }
-    #buyModal .close-x:hover { color: #ff6b6b; transform: scale(1.2); }
+    #buyModal .close-x:hover { 
+      color: #ff6b6b;
+      transform: scale(1.2);
+    }
     #buyModal h2 {
       color: #39ff14;
       font-size: 2.2rem;
@@ -244,9 +245,9 @@
     © 2026 - Venda sob prescrição médica. Consulte um profissional de saúde antes de usar. Contato: +55 16 98876-7617
   </footer>
 
-  <!-- Modal de Compra -->
+  <!-- Modal de Compra com X vermelho grande -->
   <div id="buyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; overflow-y:auto; -webkit-overflow-scrolling:touch; touch-action:pan-y; padding:20px;">
-    <div class="modal-content">
+    <div style="background:#0f0f0f; padding:2.5rem 1.8rem; border-radius:20px; border:2px solid #39ff14; max-width:420px; width:94%; text-align:center; color:#e0e0e0; box-shadow:0 10px 40px rgba(0,0,0,0.8); position:relative; max-height:90vh; overflow-y:auto;">
       <span class="close-x" onclick="fecharModal()">X</span>
       <h2>Finalizar Compra</h2>
       
@@ -254,7 +255,7 @@
 
       <div style="text-align:left;">
         <label for="email">Email (obrigatório)</label>
-        <input id="email" type="email" placeholder="seu@email.com" required>
+        <input id="email" type="email" placeholder="seu@email.com" required autofocus>
 
         <label for="cep">CEP (obrigatório)</label>
         <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')">
@@ -421,6 +422,7 @@
       itemAtual = { produto, valor };
       document.getElementById('buyModal').style.display = 'flex';
       document.getElementById('freteResult').innerHTML = '';
+      document.getElementById('email').focus(); // Zoom/foco automático no email ao abrir
     }
 
     function calcularFrete() {

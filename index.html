@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,17 +16,7 @@
       background: #000;
       color: #e0e0e0;
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
-    header {
-      background: #111;
-      padding: 4rem 8%;
-      text-align: center;
-      border-bottom: 1px solid #222;
-    }
-    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
-    h2 { font-size: 2.4rem; color: #39ff14; margin: 3.5rem 0 1.5rem; text-align: center; }
     main { 
       max-width: 1600px;
       margin: 4rem auto; 
@@ -36,48 +26,39 @@
     ul { list-style: none; max-width: 1000px; margin: 0 auto; }
     ul li { font-size: 1.3rem; margin: 1.3rem 0; padding-left: 2.5rem; position: relative; }
     ul li::before { content: '✔'; color: #39ff14; position: absolute; left: 0; font-weight: bold; font-size: 1.5rem; }
-    .what-it-does {
-      background: #0f0f0f;
-      padding: 3rem;
-      border-radius: 16px;
-      border: 1px solid #39ff14;
-      margin-bottom: 5rem;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
     .promos {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 3.5rem;
+      gap: 4rem;
+      margin-bottom: 6rem;
     }
     .promo-card {
       background: #0f0f0f;
       border: 1px solid #222;
-      border-radius: 16px;
-      padding: 2.8rem;
+      border-radius: 20px;
+      padding: 3rem;
       text-align: center;
       transition: all 0.3s;
     }
     .promo-card:hover {
       border-color: #39ff14;
       transform: translateY(-12px);
-      box-shadow: 0 20px 40px rgba(57,255,20,0.15);
+      box-shadow: 0 20px 40px rgba(57,255,20,0.2);
     }
     .promo-card img {
       width: 100%;
-      max-height: 340px;
+      max-height: 360px;
       object-fit: contain;
       border-radius: 12px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
       background: #111;
       border: 1px solid #333;
     }
-    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
-    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
-    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
+    .promo-card h3 { font-size: 2.4rem; color: #39ff14; margin-bottom: 1.2rem; }
+    .promo-card .price { font-size: 3.4rem; font-weight: 700; color: #ff3366; margin: 1.2rem 0; }
+    .promo-card .frete { color: #39ff14; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; }
     .btn {
-      padding: 1rem 2.2rem; /* Botões de compra menores */
+      padding: 1.2rem 2.8rem;
       background: #39ff14;
       color: #000;
       font-weight: 700;
@@ -85,10 +66,10 @@
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     .btn:hover { background: #2ecc10; transform: scale(1.05); }
-    .whatsapp-btn { background: #25D366; color: white; padding: 1rem 2.2rem; font-size: 1.1rem; }
+    .whatsapp-btn { background: #25D366; color: white; }
     footer {
       text-align: center;
       padding: 4rem;
@@ -97,54 +78,7 @@
       margin-top: 6rem;
     }
 
-    /* Carrinho discreto pequeno */
-    #cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 25px;
-      color: #777;
-      font-size: 1.3rem;
-      cursor: pointer;
-      z-index: 10000;
-      transition: color 0.3s;
-    }
-    #cart-icon:hover { color: #39ff14; }
-    #cart-badge {
-      position: absolute;
-      top: -7px;
-      right: -9px;
-      background: #39ff14;
-      color: #000;
-      font-size: 0.7rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      display: none;
-    }
-    #cart-dropdown {
-      position: fixed;
-      top: 55px;
-      right: 25px;
-      background: #0f0f0f;
-      border: 1px solid #222;
-      border-radius: 10px;
-      padding: 12px;
-      width: 220px;
-      max-height: 320px;
-      overflow-y: auto;
-      display: none;
-      z-index: 9999;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    }
-    #cart-items li { font-size: 0.9rem; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; }
-    .remove-btn { color: #ff3366; cursor: pointer; font-size: 1.1rem; font-weight: bold; margin-left: 10px; }
-    #cart-total { font-size: 1rem; color: #39ff14; text-align: right; margin-top: 10px; font-weight: bold; }
-
-    /* Modal Compra corrigido para iOS (scroll suave, sem travar) */
+    /* Modal Compra com X vermelho */
     #buyModal {
       display: none;
       position: fixed;
@@ -157,7 +91,7 @@
       justify-content: center;
       align-items: center;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch; /* Corrige scroll bugado no iOS */
+      -webkit-overflow-scrolling: touch;
       padding: 20px;
     }
     #buyModal .modal-content {
@@ -248,45 +182,7 @@
 </head>
 <body>
 
-  <!-- Carrinho discreto -->
-  <div id="cart-icon">🛒 <span id="cart-badge">0</span></div>
-  <div id="cart-dropdown">
-    <h4 style="color:#39ff14; margin-bottom:8px; font-size:0.95rem;">Carrinho</h4>
-    <ul id="cart-items"></ul>
-    <p id="cart-total">Total: R$0,00</p>
-    <button class="btn" onclick="finalizarCarrinho()" style="width:100%; margin-top:8px; font-size:0.9rem;">Finalizar Pedido</button>
-  </div>
-
-  <header>
-    <h1>Sibutramina 15mg Genérica Eurofarma</h1>
-    <p>Perca peso de forma eficaz – controle de apetite potente + promoções exclusivas!</p>
-  </header>
-
   <main>
-    <!-- O que a Sibutramina faz (objetivo) -->
-    <section class="what-it-does">
-      <h2>O que a Sibutramina faz?</h2>
-      <p style="font-size:1.4rem; text-align:center; max-width:1000px; margin:0 auto;">
-        A Sibutramina 15mg reduz o apetite e aumenta a saciedade, fazendo você comer menos sem passar fome. Acelera o metabolismo, mantém a queima de calorias alta e evita o efeito platô das dietas. Resultado: perda real de 5-10% do peso em poucas semanas (com dieta e exercício) – sempre com orientação médica.
-      </p>
-    </section>
-
-    <section>
-      <h2>Benefícios da Sibutramina 15mg</h2>
-      <ul>
-        <li>Aumenta rapidamente a sensação de saciedade – você come menos sem passar fome o dia todo.</li>
-        <li>Reduz o apetite e os cravings – ideal para quem tem compulsão alimentar ou ansiedade por comida.</li>
-        <li>Acelera o metabolismo e mantém o gasto energético – evita o "efeito platô" comum em dietas.</li>
-        <li>Perda de peso significativa: em média 5-10% do peso inicial em poucas semanas (com dieta e exercício).</li>
-        <li>Resultados visíveis logo nas primeiras semanas – motivação alta para continuar o tratamento.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Como a Sibutramina Funciona?</h2>
-      <p>A sibutramina 15mg age no cérebro inibindo a recaptação de serotonina e noradrenalina (neurotransmissores que controlam fome e saciedade). Isso faz você se sentir satisfeito mais rápido e por mais tempo, reduzindo a ingestão calórica naturalmente. Além disso, previne a queda no metabolismo após perda inicial de peso, ajudando a queimar mais calorias mesmo em repouso. É um duplo mecanismo: menos comida + mais queima = emagrecimento real e sustentável (sempre com orientação médica).</p>
-    </section>
-
     <section>
       <h2>Promoções Imperdíveis</h2>
       <div class="promos">
@@ -320,6 +216,17 @@
         </div>
       </div>
     </section>
+
+    <section>
+      <h2>Benefícios da Sibutramina 15mg</h2>
+      <ul>
+        <li>Aumenta rapidamente a sensação de saciedade – você come menos sem passar fome o dia todo.</li>
+        <li>Reduz o apetite e os cravings – ideal para quem tem compulsão alimentar ou ansiedade por comida.</li>
+        <li>Acelera o metabolismo e mantém o gasto energético – evita o "efeito platô" comum em dietas.</li>
+        <li>Perda de peso significativa: em média 5-10% do peso inicial em poucas semanas (com dieta e exercício).</li>
+        <li>Resultados visíveis logo nas primeiras semanas – motivação alta para continuar o tratamento.</li>
+      </ul>
+    </section>
   </main>
 
   <footer>
@@ -352,11 +259,11 @@
 
       <div id="freteResult" style="margin:30px 0; font-size:1.4rem; font-weight:700; color:#39ff14; min-height:60px;"></div>
 
-      <button class="btn-green" onclick="calcularFrete()" style="width:100%; margin:15px 0; padding:18px; font-size:1.3rem; border-radius:50px;">Calcular Frete</button>
+      <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
       
-      <button class="btn-green" onclick="prosseguirCompra()" style="width:100%; margin:15px 0; padding:18px; font-size:1.3rem; border-radius:50px;">Prosseguir para PIX</button>
+      <button class="btn-green" onclick="prosseguirCompra()">Prosseguir para PIX</button>
       
-      <button onclick="fecharModal()" class="btn-cancel" style="width:100%; margin:15px 0; padding:16px; font-size:1.1rem;">Cancelar</button>
+      <button onclick="fecharModal()" class="btn-cancel">Cancelar</button>
     </div>
   </div>
 

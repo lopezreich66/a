@@ -193,7 +193,7 @@
     const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn'; // Produção
     // const API_URL = 'https://api-sandbox.pushinpay.com.br/api/pix/cashIn'; // Descomente para testes sem custo real
 
-    const TOKEN = 'SEU_BEARER_TOKEN_AQUI'; // SUBSTITUA PELO SEU TOKEN REAL DO DASHBOARD PUSHINPAY
+    const TOKEN = '( 61375|vqLhQ8QVc27GVgkcOhWtM93fI5iYSN5grpnXXblhe973c6b9 )'; // TOKEN NOVO QUE VOCÊ MANDOU – NÃO MUDE AQUI SE JÁ ESTIVER CERTO
 
     async function gerarPix(valorCentavos, produto) {
       const modal = document.getElementById('pixModal');
@@ -203,7 +203,7 @@
 
       valueEl.textContent = `Valor: R$${(valorCentavos / 100).toFixed(2)} - ${produto}`;
       qrEl.src = ''; 
-      codeEl.value = 'Gerando PIX... Aguarde';
+      codeEl.value = 'Gerando PIX... Aguarde um momento';
 
       modal.style.display = 'flex';
 
@@ -217,12 +217,13 @@
           },
           body: JSON.stringify({
             value: valorCentavos,
-            webhook_url: '' // Coloque sua URL de webhook se quiser notificações automáticas
+            webhook_url: '' // Adicione se quiser webhook para confirmação automática
           })
         });
 
         if (!response.ok) {
-          throw new Error(`Erro na API: ${response.status} - ${response.statusText}`);
+          const errorText = await response.text();
+          throw new Error(`Erro na API: ${response.status} - ${errorText || response.statusText}`);
         }
 
         const data = await response.json();
@@ -231,10 +232,10 @@
           qrEl.src = data.qr_code_base64.includes('data:') ? data.qr_code_base64 : `data:image/png;base64,${data.qr_code_base64}`;
           codeEl.value = data.qr_code;
         } else {
-          codeEl.value = 'Erro ao gerar o PIX. Tente novamente ou contate suporte.';
+          codeEl.value = 'Erro ao gerar o PIX. Verifique o token ou tente novamente.';
         }
       } catch (error) {
-        codeEl.value = `Falha: ${error.message}. Verifique seu token ou conexão.`;
+        codeEl.value = `Falha: ${error.message}. Verifique token, White IP List ou conexão.`;
         console.error('Erro detalhado:', error);
       }
     }
@@ -243,7 +244,7 @@
       const code = document.getElementById('pixCode');
       code.select();
       document.execCommand('copy');
-      alert('Código PIX copiado com sucesso! Cole no seu app de banco.');
+      alert('Código PIX copiado! Cole no seu app de banco.');
     }
 
     function closePixModal() {

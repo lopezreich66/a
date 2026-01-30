@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sibutramina 15mg Genérico - Emagreça de Verdade Agora</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #000; color: #e0e0e0; line-height: 1.6; }
+    header { background: #111; padding: 4rem 8%; text-align: center; border-bottom: 1px solid #222; }
+    h1 { font-size: 3.2rem; color: #39ff14; margin-bottom: 0.6rem; }
+    main { max-width: 1600px; margin: 4rem auto; padding: 0 8%; }
+    .promos { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 4rem; }
+    .promo-card {
+      background: #0f0f0f;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 2.8rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .promo-card:hover { border-color: #39ff14; transform: translateY(-12px); box-shadow: 0 20px 40px rgba(57,255,20,0.2); }
+    .promo-card img { width: 100%; max-height: 340px; object-fit: contain; border-radius: 12px; margin-bottom: 1.8rem; background: #111; border: 1px solid #333; }
+    .promo-card h3 { font-size: 2.2rem; color: #39ff14; margin-bottom: 1rem; }
+    .promo-card .price { font-size: 3.2rem; font-weight: 700; color: #ff3366; margin: 1rem 0; }
+    .promo-card .frete { color: #39ff14; font-size: 1.4rem; font-weight: 600; margin-bottom: 1.8rem; }
+    .btn {
+      padding: 1.2rem 2.8rem;
+      background: #39ff14;
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+      margin: 0.8rem 0.5rem;
+    }
+    .btn:hover { background: #2ecc10; transform: scale(1.05); }
+    .whatsapp-btn { background: #25D366; color: white; }
+    footer { text-align: center; padding: 4rem; color: #777; border-top: 1px solid #222; margin-top: 6rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sibutramina 15mg Genérica Eurofarma</h1>
+    <p>Perca peso de forma eficaz – controle de apetite potente + promoções exclusivas!</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Promoções Imperdíveis</h2>
+      <div class="promos">
+        <div class="promo-card">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas empilhadas de Sibutramina 15mg Eurofarma Genérico">
+          <h3>1 Caixa (30 cápsulas)</h3>
+          <div class="price">R$ 90</div>
+          <p>Inicie sua transformação agora mesmo.</p>
+          <button class="btn" onclick="window.location.href='checkout.html?produto=1 Caixa (30 cápsulas)&valor=90'">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+1+caixa+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+        </div>
+
+        <div class="promo-card">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
+          <h3>2 Caixas (60 cápsulas)</h3>
+          <div class="price">R$ 170</div>
+          <div class="frete">+ Frete Grátis</div>
+          <p>Economize e acelere os resultados.</p>
+          <button class="btn" onclick="window.location.href='checkout.html?produto=2 Caixas (60 cápsulas)&valor=170'">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+2+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+        </div>
+
+        <div class="promo-card">
+          <img src="caixas-sibutramina.jpg" loading="lazy" alt="Caixas de Sibutramina 15mg Genérico Eurofarma">
+          <h3>3 Caixas (90 cápsulas)</h3>
+          <div class="price">R$ 220</div>
+          <div class="frete">+ Frete Grátis</div>
+          <p>Melhor custo-benefício para resultados duradouros.</p>
+          <button class="btn" onclick="window.location.href='checkout.html?produto=3 Caixas (90 cápsulas)&valor=220'">Comprar Agora</button>
+          <a href="https://wa.me/+5516988767617?text=Quero+3+caixas+de+sibutramina+15mg" class="btn whatsapp-btn">Falar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Benefícios da Sibutramina 15mg</h2>
+      <ul>
+        <li>Aumenta rapidamente a sensação de saciedade – você come menos sem passar fome o dia todo.</li>
+        <li>Reduz o apetite e os cravings – ideal para quem tem compulsão alimentar ou ansiedade por comida.</li>
+        <li>Acelera o metabolismo e mantém o gasto energético – evita o "efeito platô" comum em dietas.</li>
+        <li>Perda de peso significativa: em média 5-10% do peso inicial em poucas semanas (com dieta e exercício).</li>
+        <li>Resultados visíveis logo nas primeiras semanas – motivação alta para continuar o tratamento.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 - Venda sob prescrição médica. Consulte um profissional de saúde antes de usar. Contato: +55 16 98876-7617
+  </footer>
+</body>
+</html>

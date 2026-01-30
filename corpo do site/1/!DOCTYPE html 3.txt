@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmação e PIX - Sibutramina 15mg</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 { color: #39ff14; text-align: center; margin-bottom: 2rem; font-size: 2.2rem; }
+    .summary { 
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .summary p { margin: 0.8rem 0; }
+    .qr-container {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    #qrImage {
+      width: 240px;
+      height: 240px;
+      border: 4px solid #39ff14;
+      border-radius: 12px;
+    }
+    #pixCode {
+      width: 100%;
+      padding: 16px;
+      background: #222;
+      color: #39ff14;
+      border: 1px solid #444;
+      border-radius: 10px;
+      font-family: monospace;
+      text-align: center;
+      margin: 1rem 0;
+      font-size: 1rem;
+    }
+    #timer {
+      margin: 1.5rem 0;
+      font-size: 1.3rem;
+      color: #ff3366;
+      font-weight: 700;
+      text-align: center;
+    }
+    .btn {
+      width: 100%;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-green { background: #39ff14; color: black; }
+    .btn-copy { background: #25D366; color: white; }
+    .btn-close { background: #ff3366; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>Confirme seus dados</h1>
+
+  <div class="summary" id="summary"></div>
+
+  <button class="btn btn-green" id="confirmBtn" onclick="gerarPixFinal()">Confirmar e Gerar PIX</button>
+  <button class="btn btn-cancel" onclick="window.location.href='checkout.html'">Voltar</button>
+
+  <div id="pixArea" style="display:none; margin-top:2rem;">
+    <h2>Pague via PIX</h2>
+    <p id="pixValue"></p>
+    <div class="qr-container">
+      <img id="qrImage" src="" alt="QR Code PIX">
+    </div>
+    <p>Código Copia e Cola:</p>
+    <input id="pixCode" readonly>
+    <button class="btn btn-copy" onclick="copyPixCode()">Copiar Código</button>
+    <div id="timer">Tempo restante: <span id="timeLeft">15:00</span></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const produto = params.get('produto');
+    const valor = parseFloat(params.get('valor'));
+    const frete = parseFloat(params.get('frete'));
+    const email = params.get('email');
+    const cep = params.get('cep');
+    const numero = params.get('numero');
+    const complemento = params.get('complemento');
+
+    const total = valor + frete;
+
+    document.getElementById('summary').innerHTML = `
+      <p><strong>Produto:</strong> ${produto}</p>
+      <p><strong>Valor do produto:</strong> R$${valor.toFixed(2)}</p>
+      <p><strong>Frete estimado:</strong> R$${frete.toFixed(2)}</p>
+      <p><strong>Total a pagar:</strong> R$${total.toFixed(2)}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>CEP:</strong> ${cep}</p>
+      <p><strong>Número:</strong> ${numero}</p>
+      ${complemento ? `<p><strong>Complemento:</strong> ${complemento}</p>` : ''}
+    `;
+
+    const API_URL = 'https://api.pushinpay.com.br/api/pix/cashIn';
+    const TOKEN = '61382|C0izZLKkR0LdwJQzSbKFqylrgNkMBePNwRYobLZledd4ee14';
+
+    async function gerarPixFinal() {
+      document.getElementById('confirmBtn').style.display = 'none';
+
+      const pixArea = document.getElementById('pixArea');
+      pixArea.style.display = 'block';
+
+      const valueEl = document.getElementById('pixValue');
+      const qrEl = document.getElementById('qrImage');
+      const codeEl = document.getElementById('pixCode');
+      const timerEl = document.getElementById('timeLeft');
+
+      valueEl.textContent = `Valor: R$${total.toFixed(2)} - ${produto}`;
+      qrEl.src = '';
+      codeEl.value = 'Gerando PIX... Aguarde';
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${TOKEN}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            value: Math.round(total * 100),
+            webhook_url: ''
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.qr_code_base64 && data.qr_code) {
+          qrEl.src = data.qr_code_base64.includes('data:') ? data.qr_code_base64 : `data:image/png;base64,${data.qr_code_base64}`;
+          codeEl.value = data.qr_code;
+
+          let time = 900;
+          const interval = setInterval(() => {
+            time--;
+            const min = Math.floor(time / 60);
+            const sec = time % 60;
+            timerEl.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+            if (time <= 0) {
+              clearInterval(interval);
+              timerEl.textContent = 'Tempo esgotado';
+            }
+          }, 1000);
+        } else {
+          codeEl.value = `Erro ao gerar PIX: ${data.message || 'Verifique token ou IP'}`;
+        }
+      } catch (error) {
+        codeEl.value = `Falha na conexão: ${error.message}`;
+        console.error(error);
+      }
+    }
+
+    function copyPixCode() {
+      const code = document.getElementById('pixCode');
+      code.select();
+      document.execCommand('copy');
+      alert('Código PIX copiado!');
+    }
+  </script>
+</body>
+</html>

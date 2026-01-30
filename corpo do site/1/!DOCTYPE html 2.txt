@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finalizar Compra - Sibutramina 15mg</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 { color: #39ff14; text-align: center; margin-bottom: 2rem; font-size: 2.2rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 1rem; color: #ddd; }
+    input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+    }
+    #freteResult { margin: 1.5rem 0; font-size: 1.3rem; color: #39ff14; text-align: center; font-weight: bold; }
+    button {
+      width: 100%;
+      padding: 1.2rem;
+      margin: 1rem 0;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-green { background: #39ff14; color: black; }
+    .btn-cancel { background: #444; color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <h1>Finalizar Compra</h1>
+  <p style="text-align:center; color:#bbb;">Preencha os dados para calcular frete e prosseguir.</p>
+
+  <label for="email">Email (obrigatório)</label>
+  <input id="email" type="email" placeholder="seu@email.com" required autofocus>
+
+  <label for="cep">CEP (obrigatório)</label>
+  <input id="cep" type="text" maxlength="8" placeholder="00000000" required oninput="this.value = this.value.replace(/\D/g,'')">
+
+  <label for="numero">Número da casa (obrigatório)</label>
+  <input id="numero" type="text" placeholder="123" required>
+
+  <label for="complemento">Complemento (opcional)</label>
+  <input id="complemento" type="text" placeholder="Apto 101, Bloco B">
+
+  <div id="freteResult"></div>
+
+  <button class="btn-green" onclick="calcularFrete()">Calcular Frete</button>
+  <button class="btn-green" onclick="prosseguir()">Prosseguir para Confirmação</button>
+  <button class="btn-cancel" onclick="window.location.href='index.html'">Cancelar</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const produto = params.get('produto');
+    const valor = parseFloat(params.get('valor'));
+
+    let freteAtual = 0;
+
+    function calcularFrete() {
+      const cep = document.getElementById('cep').value.trim();
+      const freteEl = document.getElementById('freteResult');
+
+      if (cep.length !== 8 || isNaN(cep)) {
+        freteEl.innerHTML = '<span style="color:#ff3366;">CEP inválido! Digite 8 números.</span>';
+        return;
+      }
+
+      freteAtual = valor === 90 ? 15 : 10;
+      freteEl.innerHTML = `Frete estimado: R$${freteAtual.toFixed(2)}<br>Total: R$${(valor + freteAtual).toFixed(2)}`;
+    }
+
+    function prosseguir() {
+      const email = document.getElementById('email').value.trim();
+      const cep = document.getElementById('cep').value.trim();
+      const numero = document.getElementById('numero').value.trim();
+      const complemento = document.getElementById('complemento').value.trim();
+
+      if (!email || !cep || !numero) {
+        alert('Preencha Email, CEP e Número da casa!');
+        return;
+      }
+
+      const url = `confirm.html?produto=${encodeURIComponent(produto)}&valor=${valor}&frete=${freteAtual}&email=${encodeURIComponent(email)}&cep=${cep}&numero=${numero}&complemento=${encodeURIComponent(complemento)}`;
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>

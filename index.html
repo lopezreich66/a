@@ -55,7 +55,37 @@
     }
 
     /* ========================================================= */
-    /* BOTÃO HAMBURGER - MENU LATERAL - LINHAS 185-250           */
+    /* EFEITO DE NEVE - SÓ ATIVA APÓS CLIQUE - LINHAS 185-250   */
+    /* ========================================================= */
+    #snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      display: none; /* começa escondido */
+    }
+
+    .snowflake {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+
+    /* ========================================================= */
+    /* BOTÃO HAMBURGER - MENU LATERAL - LINHAS 255-320           */
     /* ========================================================= */
     .hamburger {
       position: fixed;
@@ -84,7 +114,7 @@
     }
 
     /* ========================================================= */
-    /* SIDEBAR LATERAL ESQUERDA - LINHAS 255-350                 */
+    /* SIDEBAR LATERAL ESQUERDA - LINHAS 325-420                 */
     /* ========================================================= */
     .sidebar {
       position: fixed;
@@ -138,7 +168,7 @@
     }
 
     /* ========================================================= */
-    /* ÍCONE CARRINHO SUPERIOR DIREITO - LINHAS 355-420          */
+    /* ÍCONE CARRINHO - LINHAS 425-490                           */
     /* ========================================================= */
     #cart-icon {
       position: fixed;
@@ -188,7 +218,7 @@
     }
 
     /* ========================================================= */
-    /* DROPDOWN DO CARRINHO - LINHAS 425-480                     */
+    /* DROPDOWN DO CARRINHO - LINHAS 495-550                     */
     /* ========================================================= */
     #cart-dropdown {
       display: none;
@@ -207,7 +237,7 @@
     }
 
     /* ========================================================= */
-    /* MODAIS (COMPRA E PIX) - LINHAS 485-620                    */
+    /* MODAIS (COMPRA E PIX) - LINHAS 555-700                    */
     /* ========================================================= */
     .modal {
       display: none;
@@ -252,8 +282,92 @@
       transform: rotate(180deg) scale(1.15);
     }
 
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: #dddddd;
+      font-size: 1.1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid #444444;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      font-size: 1.15rem;
+    }
+
+    #freteResult {
+      margin: 40px 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #27ae60;
+      min-height: 80px;
+      line-height: 1.4;
+    }
+
+    .btn-green {
+      width: 100%;
+      margin: 20px 0;
+      padding: 22px;
+      font-size: 1.5rem;
+      border-radius: 60px;
+      background: #27ae60;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+
+    .btn-green:hover {
+      background: #219653;
+      transform: translateY(-3px);
+    }
+
+    .btn-cancel {
+      width: 100%;
+      margin: 15px 0;
+      padding: 20px;
+      background: #444444;
+      color: #cccccc;
+      border: none;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
     /* ========================================================= */
-    /* BOTÃO FLUTUANTE WHATSAPP - LINHAS 625-670                 */
+    /* QR CODE FIXO PARA VALORES BAIXOS - LINHAS 705-750         */
+    /* ========================================================= */
+    .qr-low-value {
+      display: none;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .qr-low-value img {
+      width: 220px;
+      height: 220px;
+      border: 5px solid #27ae60;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(39,174,96,0.3);
+    }
+
+    .qr-low-value p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #27ae60;
+      font-weight: 600;
+    }
+
+    /* ========================================================= */
+    /* BOTÃO FLUTUANTE WHATSAPP - LINHAS 755-800                 */
     /* ========================================================= */
     .whatsapp-float {
       position: fixed;
@@ -282,7 +396,7 @@
     }
 
     /* ========================================================= */
-    /* DESTAQUE WHATSAPP NO INÍCIO - LINHAS 675-720              */
+    /* DESTAQUE WHATSAPP NO INÍCIO - LINHAS 805-850              */
     /* ========================================================= */
     .destaque-whatsapp {
       background: rgba(39,174,96,0.18);
@@ -301,7 +415,7 @@
 
     /* ========================================================= */
     /* ESTILOS GERAIS DE BOTÕES, CARDS, ETC. (continuação longa) */
-    /* LINHAS 725-1100                                            */
+    /* LINHAS 855-1150                                            */
     /* ========================================================= */
     .btn {
       padding: 1.3rem 2.6rem;
@@ -357,7 +471,7 @@
 
     /* ========================================================= */
     /* MEDIA QUERIES - MUITOS BREAKPOINTS PARA RESPONSIVIDADE     */
-    /* LINHAS 1105-1250                                           */
+    /* LINHAS 1155-1300                                           */
     /* ========================================================= */
     @media (max-width: 1600px) { .sidebar { width: 320px; } .promo-card { padding: 3rem 2rem; } }
     @media (max-width: 1400px) { .sidebar { width: 300px; padding: 130px 35px 50px; } }
@@ -386,7 +500,7 @@
     }
 
     /* ========================================================= */
-    /* SEÇÃO INICIAL - WELCOME - LINHAS 1255-1350                */
+    /* SEÇÃO INICIAL - WELCOME - LINHAS 1305-1400                */
     /* ========================================================= */
     .welcome {
       max-width: 960px;
@@ -427,7 +541,7 @@
     }
 
     /* ========================================================= */
-    /* REFERÊNCIAS TEXTUAIS - LINHAS 1355-1450                   */
+    /* REFERÊNCIAS TEXTUAIS - LINHAS 1405-1500                   */
     /* ========================================================= */
     .references {
       max-width: 960px;
@@ -456,7 +570,7 @@
     }
 
     /* ========================================================= */
-    /* SEÇÕES DO CATÁLOGO - CADA UMA ISOLADA - LINHAS 1455-1600 */
+    /* SEÇÕES DO CATÁLOGO - CADA UMA ISOLADA - LINHAS 1505-1700 */
     /* ========================================================= */
     .category-section { display:none; }
     .category-section.active { display:block; }
@@ -468,6 +582,27 @@
       margin: 4rem 0 3rem;
       text-shadow: 0 0 20px rgba(39,174,96,0.4);
     }
+
+    .qr-low-value {
+      display: none;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .qr-low-value img {
+      width: 220px;
+      height: 220px;
+      border: 5px solid #27ae60;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(39,174,96,0.3);
+    }
+
+    .qr-low-value p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #27ae60;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -477,6 +612,9 @@
     <source src="https://www.youtube.com/watch?v=L_T0zQbfeWA" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
+
+  <!-- Container da neve (ativa após clique) -->
+  <div id="snow-container"></div>
 
   <!-- BOTÃO FLUTUANTE WHATSAPP -->
   <a href="https://wa.me/+5516988767617?text=Ol%C3%A1!%20Vi%20o%20site%20e%20quero%20fazer%20uma%20compra" class="whatsapp-float" target="_blank">
@@ -514,6 +652,10 @@
     <h4 style="color:#27ae60; margin-bottom:20px; text-align:center; font-size:1.5rem;">Seu Carrinho</h4>
     <ul id="cart-items" style="list-style:none; margin-bottom:20px; padding:0;"></ul>
     <p id="cart-total" style="text-align:right; font-weight:700; color:#27ae60; font-size:1.4rem; margin:25px 0;">Total: R$0,00</p>
+    <div class="qr-low-value" id="qrLowValue">
+      <p>Pague via PIX até R$ 150 direto no QR Code abaixo</p>
+      <img src="https://via.placeholder.com/220x220/27ae60/000?text=QR+PIX+ATE+150" alt="QR Code PIX">
+    </div>
     <button class="btn" onclick="prosseguirParaPagamento()" style="width:100%;">Ir para Compra</button>
   </div>
 
@@ -521,7 +663,7 @@
   <main>
     <!-- Página Inicial - limpa -->
     <section id="inicio" class="welcome category-section active">
-      <h2>Seja bem vindo!</h2>
+      <h2>Bem-vindo à Loja de Medicamentos Controlados</h2>
       <p>Somos especializados em genéricos e originais, com entrega discreta e segura em todo o Brasil.</p>
       <p style="margin:1.5rem 0; font-size:1.3rem; color:#ffcc00; font-weight:600;">
         Vendas acima de R$ 150,00 só pelo WhatsApp. Clique no botão direito do produto desejado no catálogo para falar diretamente.
@@ -791,8 +933,8 @@
   </main>
 
   <footer>
-    © 2026 - Bernardo Steinbrenner. <br>
-    Contato: +55 16 98876-7617 
+    © 2026 - Loja Medicamentos Controlados<br>
+    Contato: +55 16 98876-7617 | Entrega discreta garantida
   </footer>
 
   <!-- Modal de Preenchimento de Dados -->
@@ -847,35 +989,38 @@
     let freteAtual = 0;
 
     const music = document.getElementById('backgroundMusic');
+    const snowContainer = document.getElementById('snow-container');
 
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
+    // Função para criar neve
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+      snowflake.style.opacity = Math.random();
+      snowflake.style.width = Math.random() * 8 + 5 + 'px';
+      snowflake.style.height = snowflake.style.width;
+      snowContainer.appendChild(snowflake);
+
+      setTimeout(() => snowflake.remove(), 10000);
     }
 
-    // Função pra mostrar seção
-    function showSection(sectionId) {
-      document.querySelectorAll('.category-section').forEach(sec => sec.classList.remove('active'));
-      const target = document.getElementById(sectionId);
-      if (target) {
-        target.classList.add('active');
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-      document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-      const link = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
-      if (link) link.classList.add('active');
+    // Neve caindo a cada 100ms
+    function startSnow() {
+      snowContainer.style.display = 'block';
+      setInterval(createSnowflake, 100);
     }
 
-    // Abre catálogo e toca música
+    // Abre catálogo, toca música e inicia neve
     function abrirCatalogo() {
       showSection('emagrecedores'); // abre o catálogo automaticamente
 
-      // Toca a música baixinho após interação
-      music.volume = 0.15; // bem baixinho
-      music.play().then(() => {
-        console.log('Música tocando baixinho');
-      }).catch(err => {
-        console.log('Autoplay bloqueado, precisa de mais interação:', err);
-      });
+      // Toca música baixinho
+      music.volume = 0.15;
+      music.play().catch(err => console.log('Autoplay bloqueado:', err));
+
+      // Inicia neve
+      startSnow();
     }
 
     // Navegação do menu lateral
@@ -886,10 +1031,13 @@
         showSection(targetId);
         toggleSidebar();
 
-        // Toca música se já interagiu
+        // Toca música e inicia neve se já interagiu
         if (music.paused) {
           music.volume = 0.15;
           music.play().catch(() => {});
+        }
+        if (!snowContainer.style.display || snowContainer.style.display === 'none') {
+          startSnow();
         }
       });
     });
@@ -946,6 +1094,14 @@
       });
 
       document.getElementById('cart-total').textContent = `Total: R$ ${total.toFixed(2)}`;
+
+      // Mostra QR Code se total <= 150
+      const qrDiv = document.getElementById('qrLowValue');
+      if (total <= 150 && total > 0) {
+        qrDiv.style.display = 'block';
+      } else {
+        qrDiv.style.display = 'none';
+      }
     }
 
     function calcularFrete() {
